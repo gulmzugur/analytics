@@ -1,23 +1,42 @@
 {
-    "name": "squirtle/analytics",
-    "description": "Web Analytics package for applications",
-    "type": "package",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Squirtle\\Analytics\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Squirtle",
-            "email": "gulmzugur@gmail.com"
-        }
-    ],
-    "require": {
-        "laravel/framework": "^10.0",
-        "google/apiclient": "^2.15",
-        "symfony/cache": "^6.3",
-        "ext-json": "*"
+  "name": "squirtle/analytics",
+  "description": "Web Analytics package for applications",
+  "keywords": [
+    "squirtle",
+    "google",
+    "analytics",
+    "reports",
+    "laravel"
+  ],
+  "type": "package",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Squirtle",
+      "email": "gulmzugur@gmail.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Squirtle\\Analytics\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Squirtle\\Analytics\\Providers\\AnalyticsServiceProvider"
+      ],
+      "aliases": {
+        "Analytics": "Squirtle\\Analytics\\Facades\\Analytics"
+      }
+    }
+  },
+  "require": {
+    "laravel/framework": "^10.0",
+    "google/apiclient": "^2.15",
+    "symfony/cache": "^6.3",
+    "ext-json": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

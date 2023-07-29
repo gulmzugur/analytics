@@ -25,25 +25,26 @@ class AnalyticsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind(AnalyticsClient::class, function () {
             return AnalyticsClientFactory::createForConfig(config('analytics'));
         });
 
         $this->app->bind(Analytics::class, function () {
-            if (empty(setting('analytics_view_id', config('analytics.view_id')))) {
+            if (empty(config('analytics.view_id'))) {
                 throw InvalidConfiguration::viewIdNotSpecified();
             }
 
-            if (!setting('analytics_service_account_credentials')) {
+            if (!config('analytics.account_credentials')) {
                 throw InvalidConfiguration::credentialsIsNotValid();
             }
 
             return new Analytics(
                 $this->app->make(AnalyticsClient::class),
-                setting('analytics_view_id', config('analytics.view_id'))
+                config('analytics.view_id')
             );
         });
+
     }
 }

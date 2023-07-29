@@ -39,7 +39,7 @@ class AnalyticsClientFactory
             AnalyticsService::ANALYTICS_READONLY,
         ]);
 
-        $client->setAuthenticationConfiguration(setting('analytics_service_account_credentials'));
+        $client->setAuthenticationConfiguration(config('analytics.account_credentials'));
 
         self::configureCache($client, $config['cache']);
 
